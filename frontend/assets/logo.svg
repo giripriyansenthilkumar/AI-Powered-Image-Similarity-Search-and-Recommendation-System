@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="100" fill="#5f3dc4" opacity="0.1"/>
+  
+  <!-- Fashion/Clothing icon - stylized dress form -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5f3dc4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#20c997;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Dress/clothing silhouette -->
+  <g fill="url(#logoGradient)">
+    <!-- Neckline -->
+    <ellipse cx="100" cy="60" rx="25" ry="15"/>
+    
+    <!-- Main dress body -->
+    <path d="M 75 75 Q 65 100 70 140 Q 70 150 85 150 L 115 150 Q 130 150 130 140 Q 135 100 125 75 Z"/>
+    
+    <!-- Sleeves -->
+    <ellipse cx="55" cy="85" rx="12" ry="22" fill="url(#logoGradient)" opacity="0.8"/>
+    <ellipse cx="145" cy="85" rx="12" ry="22" fill="url(#logoGradient)" opacity="0.8"/>
+  </g>
+  
+  <!-- Accent line -->
+  <line x1="100" y1="50" x2="100" y2="155" stroke="#ff6f91" stroke-width="2" opacity="0.6"/>
+</svg>
