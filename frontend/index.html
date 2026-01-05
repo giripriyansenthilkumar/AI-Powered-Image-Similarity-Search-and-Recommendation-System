@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fashion Image Similarity</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+  <body>
+  <div class="topbar-layout" role="application" aria-label="Fashion Similarity Application">
+    <nav class="topbar" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="Fashion Similarity Logo" class="logo" />
+        <span class="brand-title">Fashion Similarity</span>
+      </div>
+      <div role="tablist" class="topbar-nav-wrapper">
+        <ul class="topbar-nav" role="presentation">
+          <li><a href="#" id="navDashboard" class="active" role="tab" aria-selected="true" aria-controls="dashboardSection">Dashboard</a></li>
+          <li><a href="#" id="navAbout" role="tab" aria-selected="false" aria-controls="aboutSection">About</a></li>
+          <li><a href="#" id="navHelp" role="tab" aria-selected="false" aria-controls="helpSection">Help</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main-content" role="main">
+      <section id="dashboardSection" role="region" aria-label="Dashboard">
+        <header>
+          <h1>Find Similar Fashion Items <span class="status-badge pulse" title="Ready" aria-label="Service ready"></span></h1>
+        </header>
+        <main>
+        <section class="upload-section" aria-label="Image Upload">
+          <div class="upload-card" tabindex="0" role="group" aria-label="Upload or capture an image" aria-pressed="false">
+            <input type="file" id="imageInput" accept="image/*" aria-label="Upload image file" />
+            <label for="imageInput" class="upload-label" role="presentation">
+              <span class="upload-icon" aria-hidden="true"></span>
+              <span>Click or drag an image here to upload</span>
+            </label>
+
+            <div class="capture-options" aria-label="Camera capture options">
+              <div class="option-label">Or use your camera</div>
+              <div class="camera-block">
+                <video id="cameraPreview" class="camera-preview" autoplay playsinline muted hidden aria-label="Camera preview"></video>
+                <div class="capture-buttons">
+                  <button id="startCameraBtn" type="button" aria-label="Start camera">Start Camera</button>
+                  <button id="capturePhotoBtn" type="button" aria-label="Capture photo" disabled>Capture</button>
+                  <button id="stopCameraBtn" type="button" aria-label="Stop camera" disabled>Stop</button>
+                </div>
+                <p class="camera-hint">Images stay on your device until you submit. Allow camera access to capture.</p>
+              </div>
+            </div>
+
+            <div class="preview-panel" id="previewPanel" hidden aria-live="polite">
+              <img id="previewImage" src="assets/placeholder.svg" alt="Image preview" />
+              <button id="removeImageBtn" aria-label="Remove image">×</button>
+            </div>
+            <button id="findSimilarBtn" disabled aria-label="Find similar fashion items">Find Similar</button>
+          </div>
+          <div class="status-message" id="statusMessage" role="status" aria-live="polite" aria-atomic="true"></div>
+          <div class="loader" id="loader" hidden aria-label="Loading results" role="status"></div>
+        </section>
+    <section class="results-section" aria-label="Similar Images">
+      <div class="results-grid" id="resultsGrid" role="region" aria-live="polite" aria-label="Search results"></div>
+    </section>
+  </main>
+      </section>
+      <section id="aboutSection" class="hidden-section">
+        <header>
+          <h1>
+            <span class="about-title-primary">About</span>
+            <span class="about-title-secondary">Fashion Similarity</span>
+          </h1>
+        </header>
+        <div class="about-cards">
+          <div class="about-card">
+            <div class="about-icon about-icon-shopping" aria-hidden="true">
+
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 8V7a5 5 0 0110 0v1h2a1 1 0 011 1l-.7 11a2 2 0 01-2 1.9H6.7a2 2 0 01-2-1.9L4 9a1 1 0 011-1h2zm2 0h6V7a3 3 0 00-6 0v1z" />
+              </svg>
+            </div>
+            <div>
+              <h2>What we do</h2>
+              <p><strong>Fashion Image Similarity</strong> provides a production-ready visual search experience for apparel and accessories. Upload a photo and receive ranked, visually similar items from a curated catalog — perfect for search-by-image, discovery, and personalized recommendations.</p>
+              <p class="muted">Built for accuracy and latency: compact learned embeddings, efficient FAISS indexing, and a lightweight inference API.</p>
+            </div>
+          </div>
+
+          <div class="about-card">
+            <div class="about-icon about-icon-lightning" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M13 2L5 13h5l-1 9 8-12h-5l1-8z" />
+              </svg>
+            </div>
+            <div>
+              <h2>How it works</h2>
+              <ul>
+                <li><strong>Client:</strong> upload or drag an image; preview appears instantly.</li>
+                <li><strong>Inference:</strong> backend preprocesses the image and computes a compact embedding with a PyTorch model.</li>
+                <li><strong>Search:</strong> query the FAISS index to retrieve nearest neighbors and similarity scores.</li>
+                <li><strong>Render:</strong> the frontend displays interactive result cards with image, score, and metadata.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="about-card">
+            <div class="about-icon about-icon-tools" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M21 7.5l-3.2 3.2-2-2 3.2-3.2a3 3 0 10-4.2-4.2L11 5.3 8.7 3 6 5.7l2.3 2.3-6.8 6.8a2 2 0 102.8 2.8l6.8-6.8 2.3 2.3L19 9l2-1.5z" />
+              </svg>
+            </div>
+            <div>
+              <h2>Tech stack</h2>
+              <ul>
+                <li><strong>Frontend:</strong> semantic HTML, accessible CSS, vanilla JavaScript.</li>
+                <li><strong>Backend:</strong> FastAPI + Uvicorn (container-friendly).</li>
+                <li><strong>ML:</strong> PyTorch embeddings with a projection head; training and export scripts included.</li>
+                <li><strong>Indexing:</strong> FAISS for low-latency nearest-neighbor retrieval.</li>
+                <li><strong>Storage:</strong> optional object store or relational DB for images and metadata.</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Model Workflow card integrated into About cards -->
+          <div class="about-card wide">
+            <div>
+              <h2>End‑to‑end workflow</h2>
+              <p class="muted">A reproducible pipeline from raw images to live search: data preprocessing, model training, embedding extraction, FAISS indexing, and a simple inference API.</p>
+              <ol>
+                <li><strong>Prepare:</strong> standardize and normalize images with <code>preprocess.py</code>.</li>
+                <li><strong>Assemble:</strong> build dataset manifests and splits using <code>prepare_dataset.py</code>.</li>
+                <li><strong>Train:</strong> run <code>train_triplet_model.py</code> to learn compact embeddings via triplet loss.</li>
+                <li><strong>Embed:</strong> extract embeddings for all gallery images and save as <code>embeddings.npy</code>.</li>
+                <li><strong>Index:</strong> build <code>fashion_train_index.faiss</code> from the gallery embeddings for fast lookup.</li>
+                <li><strong>Serve:</strong> load model + FAISS in the backend and expose <code>/api/search</code> to return results.</li>
+                <li><strong>Evaluate:</strong> use <code>test_similarity.py</code> to validate ranking and iterate on model & preprocessing.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="team-section">
+          <h2>Meet the Team</h2>
+          <div class="team-grid">
+            <div class="team-card" data-member="giripriyan">
+              <img class="team-photo" src="https://avatars.githubusercontent.com/u/161918930?v=4" alt="Giripriyan" tabindex="0" />
+              <div>
+                <div class="team-name">Giripriyan S</div>
+              </div>
+            </div>
+            <div class="team-card" data-member="akarshana">
+              <img class="team-photo" src="https://avatars.githubusercontent.com/u/185575385?v=4" alt="Akarshana" tabindex="0" />
+              <div>
+                <div class="team-name">Akarshana S</div>
+              </div>
+            </div>
+            <div class="team-card" data-member="sivabakkiyan">
+              <img class="team-photo" src="https://avatars.githubusercontent.com/u/173354924?v=4" alt="Sivabakkiyan" tabindex="0" />
+              <div>
+                <div class="team-name">Sivabakkiyan I</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        <!-- Team Member Modal -->
+        <div id="memberModal" class="modal" hidden>
+          <div class="modal-content">
+            <button class="close-modal" id="closeMemberModal" aria-label="Close profile">&times;</button>
+            <div id="memberModalContent"></div>
+          </div>
+        </div>
+      </section>
+      <section id="helpSection" class="hidden-section">
+        <header>
+          <h1>Help</h1>
+        </header>
+        <div class="help-content">
+          <h3>Overview</h3>
+          <p>Fashion Image Similarity provides an image-based visual search interface. Upload an image from your device to retrieve ranked, visually similar items from the reference catalog.</p>
+
+          <h3>Using the Application</h3>
+          <ol>
+            <li><strong>Navigate:</strong> Open the <em>Dashboard</em> tab to access the upload area.</li>
+            <li><strong>Upload:</strong> Click the upload region or drag and drop an image. Supported formats: <code>JPG, PNG, GIF, WebP, SVG</code>. Maximum file size: 5MB.</li>
+            <li><strong>Search:</strong> After the preview appears, click <em>Find Similar</em> to submit the image for inference. The frontend will display top matches with similarity scores.</li>
+            <li><strong>Keyboard:</strong> Use <kbd>Tab</kbd> to move focus, <kbd>Enter</kbd> or <kbd>Space</kbd> to activate controls. Shortcuts: <kbd>Shift</kbd>+<kbd>U</kbd> (focus upload), <kbd>Shift</kbd>+<kbd>F</kbd> (run search).</li>
+          </ol>
+
+          <!-- <h3>Troubleshooting</h3>
+          <ul>
+            <li><strong>No response / timeout:</strong> Ensure the backend service is reachable (for local testing use <code>http://localhost:8000</code>, or replace with your deployed host/domain). Start the API with the project backend instructions (e.g., <code>python main.py</code>).</li>
+            <li><strong>Invalid file:</strong> Confirm the image meets format and size requirements. Try a different image if preview fails.</li>
+            <li><strong>Connection errors:</strong> Check network connectivity and CORS settings if accessing the API remotely.</li>
+            <li><strong>Unexpected results:</strong> Results reflect the current model and index; improving retrieval quality requires retraining or refining preprocessing and the FAISS index.</li>
+          </ul> -->
+
+          <h3>Support</h3>
+          <p>If you need assistance, open an issue on the project repository or contact the development team. For development-related questions, include the environment details, backend logs, and a sample query image to help diagnose issues.</p>
+        </div>
+      </section>
+      <footer>
+        <p>&copy; 2025 Fashion Similarity App</p>
+      </footer>
+    </div>
+  </div>
+  <script src="js/app.js?v=2"></script>
+</body>
+</html>
