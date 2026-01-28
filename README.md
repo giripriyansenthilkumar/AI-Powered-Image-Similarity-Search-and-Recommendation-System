@@ -144,10 +144,7 @@ Through this learning process, the model understands visual relationships and ge
 ## 📸 Pipeline Overview
 
 ![Fashion Image Similarity Search Pipeline](./frontend/assets/workflow.png)
-
-![Fashion Image Similarity Search Pipeline](./frontend/assets/pipeline-diagram.png)
  
-
 *The complete pipeline from querying to results delivery*
 
 ---
@@ -155,9 +152,6 @@ Through this learning process, the model understands visual relationships and ge
 ## 🎨 Dashboard Interface
 
 ![Fashion Similarity Dashboard](./frontend/assets/dashboard.png)
-
-![Fashion Similarity Dashboard](./frontend/assets/dashboard-screenshot.png)
- 
 
 *User-friendly dashboard interface for image upload and similarity search*
 
