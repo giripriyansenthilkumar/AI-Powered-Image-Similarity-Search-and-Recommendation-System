@@ -145,6 +145,9 @@ Through this learning process, the model understands visual relationships and ge
 
 ![Fashion Image Similarity Search Pipeline](./frontend/assets/workflow.png)
 
+![Fashion Image Similarity Search Pipeline](./frontend/assets/pipeline-diagram.png)
+ 
+
 *The complete pipeline from querying to results delivery*
 
 ---
@@ -153,6 +156,9 @@ Through this learning process, the model understands visual relationships and ge
 
 ![Fashion Similarity Dashboard](./frontend/assets/dashboard.png)
 
+![Fashion Similarity Dashboard](./frontend/assets/dashboard-screenshot.png)
+ 
+
 *User-friendly dashboard interface for image upload and similarity search*
 
 ---
@@ -160,6 +166,9 @@ Through this learning process, the model understands visual relationships and ge
 ## 📊 Sample Output Results
 
 ![Top 5 Fashion Matches](./frontend/assets/output.png)
+
+![Top 5 Fashion Matches](./frontend/assets/output-results.png)
+ 
 
 *Example: White T-shirt search returning the top 5 visually similar fashion items (Epoch 2 results)*
 
